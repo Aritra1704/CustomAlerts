@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name">CustomAlerts</string>
+
+    <string name="ok">Ok</string>
+    <string name="cancel">Cancel</string>
+    <string name="discard">Discard</string>
+    <string name="alert">Alert</string>
+    <string name="failure">Failure</string>
+    <string name="gpssettings">GPS Settings</string>
+    <string name="gps_not_enabled">GPS is not enabled.So please enable GPS for better Location.</string>
+    <string name="settings">Settings</string>
+</resources>
