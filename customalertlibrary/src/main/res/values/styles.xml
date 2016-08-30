@@ -1,0 +1,129 @@
+<resources>
+
+    <!-- Base application theme. -->
+    <style name="AppThemeBase" parent="Theme.AppCompat.Light.DarkActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+    </style>
+
+    <style name="AppTheme.NoActionBar">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+    </style>
+
+    <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar"/>
+
+    <style name="AppTheme.Overlay" parent="AppThemeBase">
+        <item name="colorPrimary">@color/transparent</item>
+    </style>
+
+    <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light">
+
+    </style>
+
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="AppThemeBase">
+        <!-- Customize your theme here. -->
+        <item name="android:actionOverflowButtonStyle">@style/Widget.ActionButton.Overflow</item>
+    </style>
+
+    <style name="Widget.ActionButton.Overflow" parent="@android:style/Widget.Holo.ActionButton.Overflow">
+        <item name="android:contentDescription">@string/accessibility_overflow</item>
+    </style>
+
+    <style name="StyleAccept">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:background">@drawable/ripple_layout_t</item>
+        <item name="android:paddingRight">@dimen/margin_15</item>
+        <item name="android:paddingLeft">@dimen/margin_10</item>
+        <item name="android:paddingBottom">@dimen/margin_8</item>
+        <item name="android:textSize">@dimen/textsize_18</item>
+        <item name="android:text">@string/content_accept</item>
+        <item name="android:clickable">true</item>
+    </style>
+
+    <style name="StyleDecline">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:background">@drawable/ripple_layout_t</item>
+        <item name="android:paddingRight">@dimen/margin_10</item>
+        <item name="android:paddingLeft">@dimen/margin_10</item>
+        <item name="android:paddingBottom">@dimen/margin_5</item>
+        <item name="android:textSize">@dimen/textsize_18</item>
+        <item name="android:text">@string/content_decline</item>
+        <item name="android:clickable">true</item>
+    </style>
+
+    <style name="StyleTitle">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_gravity">center</item>
+        <item name="android:textColor">@color/colorWhite</item>
+        <item name="android:textSize">@dimen/textsize_20</item>
+        <item name="android:text">@string/content_title</item>
+    </style>
+
+    <style name="StyleFAB">
+        <item name="android:layout_width">@dimen/margin_40</item>
+        <item name="android:layout_height">@dimen/margin_40</item>
+        <item name="android:layout_margin">@dimen/fab_margin</item>
+        <item name="android:background">@drawable/solid_circle_w</item>
+        <item name="android:padding">@dimen/margin_9</item>
+    </style>
+    <!--<item name="android:background">@color/colorOffWhite</item>-->
+
+    <style name="StyleContentHeader">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:background">@color/colorWhite</item>
+        <item name="android:orientation">vertical</item>
+        <item name="android:clickable">true</item>
+    </style>
+
+    <style name="StyleIndeteminatePB">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+    </style>
+
+    <style name="AnimationPopUp" parent="android:Animation">
+        <item name="android:windowEnterAnimation">@anim/anim_popup_s</item>
+        <item name="android:windowExitAnimation">@anim/anim_popup_h</item>
+    </style>
+
+    <style name="AnimationSlideVertical" parent="android:Animation">
+        <item name="android:windowEnterAnimation">@anim/anim_slide_s</item>
+        <item name="android:windowExitAnimation">@anim/anim_slide_h</item>
+    </style>
+
+    <style name="StyleCoordinatorLayout">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">@dimen/margin_187</item>
+        <item name="android:layout_gravity">center</item>
+        <item name="android:layout_marginLeft">@dimen/margin_25</item>
+        <item name="android:layout_marginRight">@dimen/margin_25</item>
+    </style>
+
+    <style name="Repeattitle">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_gravity">center</item>
+        <item name="android:textColor">@color/colorWhite</item>
+        <item name="android:textSize">@dimen/textsize_20</item>
+        <item name="android:text">@string/Repeat_title</item>
+    </style>
+
+    <style name="StyleRepeatText">
+        <item name="android:layout_width">@dimen/margin_65</item>
+        <item name="android:layout_height">@dimen/margin_65</item>
+        <item name="android:background">@drawable/holo_circle</item>
+        <item name="android:layout_margin">@dimen/margin_5</item>
+        <item name="android:gravity">center</item>
+        <item name="android:textSize">@dimen/textsize_14</item>
+        <item name="android:clickable">true</item>
+    </style>
+
+    <style name="Widget.GifView" parent="@android:style/Widget"/>
+</resources>
