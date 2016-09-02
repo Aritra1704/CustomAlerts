@@ -5,7 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     style="@style/StyleContentHeader"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
-    tools:showIn="@layout/custom_wait">
+    tools:showIn="@layout/custom_popup_wait">
 
     <LinearLayout
         android:layout_width="match_parent"

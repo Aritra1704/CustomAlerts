@@ -1,7 +1,6 @@
 package com.arpaul.customalerts;
 
 import android.content.Context;
-import android.content.Intent;
 import android.graphics.Typeface;
 import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
@@ -10,6 +9,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
 
+import com.arpaul.customalertlibrary.dialogs.CustomDialog;
 import com.arpaul.customalertlibrary.popups.common.CustomPopupTypeFace;
 import com.arpaul.customalertlibrary.popups.listDialog.CustomListPopup;
 import com.arpaul.customalertlibrary.popups.listDialog.CustomPopupListType;
@@ -27,12 +27,9 @@ import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity implements PopupListener, PopupRepeatListener {
 
-    private CustomPopup cPopup;
-    private Button btnDialog,btnProgressBar, btnCustomDialogAccept, btnCustomDialogDecline, btnCustomDialogAlert,
-            btnCustomDialogNormal, btnCustomDialogWait;
-    private Button btnTwoway, btnMaterial, btnDeterminateTwoway, btnCustomList;
     private Context mContext;
-    private CustomPopup cDialog;
+    private CustomDialog cDialog;
+    private CustomPopup cPopup;
     private CustomRepeatPopup cRepeatDialog;
     private CustomListPopup cListDialog;
     private CustomSpinner csTest;
@@ -41,20 +38,10 @@ public class MainActivity extends AppCompatActivity implements PopupListener, Po
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
-        /*findViewById(R.id.btnAlert).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                showCustomDialog(getString(R.string.gpssettings),getString(R.string.gps_not_enabled),getString(R.string.settings),getString(R.string.cancel),getString(R.string.settings), CustomPopupType.DIALOG_ALERT,false);
-            }
-        });*/
-
         mContext = MainActivity.this;
-//        setContentView(R.layout.activity_main);
 
 //        showCustomDialog(getString(R.string.gpssettings),getString(R.string.gps_not_enabled),getString(R.string.settings),getString(R.string.cancel),getString(R.string.settings), CustomPopupType.DIALOG_ALERT,false);
-        btnDialog = (Button) findViewById(R.id.btnDialog);
-        btnDialog.setOnClickListener(new View.OnClickListener() {
+        findViewById(R.id.btnDialog).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 showCustomDialog(getString(R.string.gpssettings),getString(R.string.gps_not_enabled),getString(R.string.settings),getString(R.string.cancel),getString(R.string.settings), CustomPopupType.DIALOG_ALERT,false);
@@ -62,48 +49,59 @@ public class MainActivity extends AppCompatActivity implements PopupListener, Po
             }
         });
 
-        btnProgressBar = (Button) findViewById(R.id.btnProgressBar);
-        btnProgressBar.setOnClickListener(new View.OnClickListener() {
+        findViewById(R.id.btnDialogSuccess).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
-                /*new MaterialDialog.Builder(MainActivity.this)
-                        .title("Progress Dialog")
-                        .content("Please wait..")
-                        .progress(true, 0)
-                        .progressIndeterminateStyle(true)
-                        .show();
-
-                showProgressDialog(MainActivity.this, "Progress Dialog", "Please wait..", 80, false);*/
-            }
-        });
-
-        btnCustomDialogAccept = (Button) findViewById(R.id.btnCustomDialogAccept);
-        btnCustomDialogAccept.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                cDialog = new CustomPopup(MainActivity.this, MainActivity.this, "Success","Message success",
+                cDialog = new CustomDialog(MainActivity.this, MainActivity.this, "Success","Message success",
                         null, null, "Success", CustomPopupType.DIALOG_SUCCESS);
-//                cDialog.setHeaderColor(ColorUtils.getColor(MainActivity.this,R.color.colorBrightRed));
+//                cPopup.setHeaderColor(ColorUtils.getColor(MainActivity.this,R.color.colorBrightRed));
                 cDialog.show();
             }
         });
 
-        btnCustomDialogDecline = (Button) findViewById(R.id.btnCustomDialogDecline);
-        btnCustomDialogDecline.setOnClickListener(new View.OnClickListener() {
+        findViewById(R.id.btnDialogAlert).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                cDialog = new CustomPopup(MainActivity.this, MainActivity.this,"Failure","Message failure.",
+                cDialog = new CustomDialog(MainActivity.this, MainActivity.this, "Alert","Message alert",
+                        getString(R.string.ok), null, "Alert", CustomPopupType.DIALOG_ALERT);
+//                cPopup.setHeaderColor(ColorUtils.getColor(MainActivity.this,R.color.colorBrightRed));
+                cDialog.show();
+            }
+        });
+
+        findViewById(R.id.btnDialogFaiure).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                cDialog = new CustomDialog(MainActivity.this, MainActivity.this, "Failure","Message failure",
+                        getString(R.string.ok), null, "Alert", CustomPopupType.DIALOG_FAILURE);
+//                cPopup.setHeaderColor(ColorUtils.getColor(MainActivity.this,R.color.colorBrightRed));
+                cDialog.show();
+            }
+        });
+
+        findViewById(R.id.btnCustomDialogAccept).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                cPopup = new CustomPopup(MainActivity.this, MainActivity.this, "Success","Message success",
+                        null, null, "Success", CustomPopupType.DIALOG_SUCCESS);
+//                cPopup.setHeaderColor(ColorUtils.getColor(MainActivity.this,R.color.colorBrightRed));
+                cPopup.show();
+            }
+        });
+
+        findViewById(R.id.btnCustomDialogDecline).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                cPopup = new CustomPopup(MainActivity.this, MainActivity.this,"Failure","Message failure.",
                         getString(R.string.ok), null, "Failure", CustomPopupType.DIALOG_FAILURE);
                 Typeface tfBold = Typeface.createFromAsset(getAssets(),"fonts/Muli-Bold.ttf");
-//                cDialog.setTypefaceFor(CustomDialogTypeFace.DIALOG_BODY, tfBold, Typeface.BOLD);
-//                cDialog.setTypefaceFor(CustomDialogTypeFace.DIALOG_TITLE, tfBold, Typeface.BOLD);
-                cDialog.show();
+//                cPopup.setTypefaceFor(CustomDialogTypeFace.DIALOG_BODY, tfBold, Typeface.BOLD);
+//                cPopup.setTypefaceFor(CustomDialogTypeFace.DIALOG_TITLE, tfBold, Typeface.BOLD);
+                cPopup.show();
             }
         });
 
-        btnCustomDialogAlert = (Button) findViewById(R.id.btnCustomDialogAlert);
-        btnCustomDialogAlert.setOnClickListener(new View.OnClickListener() {
+        findViewById(R.id.btnCustomDialogAlert).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 new CustomPopup(MainActivity.this, MainActivity.this,"Alert","Message alert",
@@ -111,30 +109,27 @@ public class MainActivity extends AppCompatActivity implements PopupListener, Po
             }
         });
 
-        btnCustomDialogNormal = (Button) findViewById(R.id.btnCustomDialogNormal);
-        btnCustomDialogNormal.setOnClickListener(new View.OnClickListener() {
+        findViewById(R.id.btnCustomDialogNormal).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                cDialog = new CustomPopup(MainActivity.this, MainActivity.this,"Normal","Message normal",
+                cPopup = new CustomPopup(MainActivity.this, MainActivity.this,"Normal","Message normal",
                         getString(R.string.ok), null, "Normal", CustomPopupType.DIALOG_NORMAL);
-                cDialog.setTextColorFor(CustomPopupTypeFace.DIALOG_TITLE, ColorUtils.getColor(MainActivity.this, R.color.colorMediumGrey));
-                cDialog.show();
+                cPopup.setTextColorFor(CustomPopupTypeFace.DIALOG_TITLE, ColorUtils.getColor(MainActivity.this, R.color.colorMediumGrey));
+                cPopup.show();
             }
         });
 
-        btnCustomDialogWait = (Button) findViewById(R.id.btnCustomDialogWait);
-        btnCustomDialogWait.setOnClickListener(new View.OnClickListener() {
+        findViewById(R.id.btnCustomDialogWait).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                cDialog = new CustomPopup(MainActivity.this, MainActivity.this,"Wait","Please wait..",
+                cPopup = new CustomPopup(MainActivity.this, MainActivity.this,"Wait","Please wait..",
                         getString(R.string.ok), null, "Wait", CustomPopupType.DIALOG_WAIT);
-//                cDialog.setTextColorFor(CustomDialogTypeFace.DIALOG_TITLE, ColorUtils.getColor(MainActivity.this, R.color.bpLight_gray));
-                cDialog.show();
+//                cPopup.setTextColorFor(CustomDialogTypeFace.DIALOG_TITLE, ColorUtils.getColor(MainActivity.this, R.color.bpLight_gray));
+                cPopup.show();
             }
         });
 
-        btnCustomList = (Button) findViewById(R.id.btnCustomList);
-        btnCustomList.setOnClickListener(new View.OnClickListener() {
+        findViewById(R.id.btnCustomList).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 ArrayList<String> arrList = new ArrayList<String>();
@@ -164,8 +159,7 @@ public class MainActivity extends AppCompatActivity implements PopupListener, Po
             }
         });
 
-        btnTwoway = (Button) findViewById(R.id.btnTwoway);
-        btnTwoway.setOnClickListener(new View.OnClickListener() {
+        findViewById(R.id.btnTwoway).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 cRepeatDialog = new CustomRepeatPopup(MainActivity.this, MainActivity.this,"Repeat",
@@ -174,15 +168,13 @@ public class MainActivity extends AppCompatActivity implements PopupListener, Po
             }
         });
 
-        btnMaterial = (Button) findViewById(R.id.btnMaterial);
-        btnMaterial.setOnClickListener(new View.OnClickListener() {
+        findViewById(R.id.btnMaterial).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
             }
         });
 
-        btnDeterminateTwoway = (Button) findViewById(R.id.btnDeterminateTwoway);
-        btnDeterminateTwoway.setOnClickListener(new View.OnClickListener() {
+        findViewById(R.id.btnDeterminateTwoway).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
             }

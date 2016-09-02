@@ -1,5 +1,6 @@
-package com.arpaul.customalertlibrary.popups.statingDialog;
+package com.arpaul.customalertlibrary.dialogs;
 
+import android.app.Dialog;
 import android.content.Context;
 import android.graphics.Typeface;
 import android.os.Handler;
@@ -11,6 +12,7 @@ import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.LinearLayout;
@@ -20,16 +22,20 @@ import android.widget.TextView;
 import com.arpaul.customalertlibrary.R;
 import com.arpaul.customalertlibrary.popups.common.CustomPopupTypeFace;
 import com.arpaul.customalertlibrary.popups.common.TypefaceDO;
+import com.arpaul.customalertlibrary.popups.statingDialog.CustomPopupType;
+import com.arpaul.customalertlibrary.popups.statingDialog.PopupListener;
 
 import java.util.HashMap;
 
 /**
  * Created by Aritra on 05-07-2016.
  */
-public class CustomPopup {
+public class CustomDialog {
 
     private Context context;
-    private PopupWindow pwindo;
+//    private PopupWindow pwindo;
+//    private CustomDialogs cDialogs;
+    private Dialog cDialogs;
     private TextView tvContentDecline, tvContentAccept, tvContentBody, tvContentTitle;
     private LinearLayout llLowerLayout;
     private CollapsingToolbarLayout toolbar_layout;
@@ -53,10 +59,12 @@ public class CustomPopup {
      *
      * @param builder
      */
-    public CustomPopup(Builder builder){
+    public CustomDialog(Builder builder){
         mHandler = new Handler();
         mBuilder = builder;
         inflater = LayoutInflater.from(builder.context);
+
+        initiatePopupWindow();
     }
 
     /**
@@ -68,8 +76,8 @@ public class CustomPopup {
      * @param reason
      * @param DIALOG_TYPE
      */
-    public CustomPopup(@NonNull Context context, @NonNull PopupListener listener, @NonNull String messageTitle, @NonNull String messageBody,
-                       @NonNull String reason, @NonNull CustomPopupType DIALOG_TYPE) {
+    public CustomDialog(@NonNull Context context, @NonNull PopupListener listener, @NonNull String messageTitle, @NonNull String messageBody,
+                        @NonNull String reason, @NonNull CustomPopupType DIALOG_TYPE) {
         this.context        = context;
         this.listener       = listener;
         this.messageTitle   = messageTitle;
@@ -78,6 +86,8 @@ public class CustomPopup {
         this.DIALOG_TYPE    = DIALOG_TYPE;
 
         inflater = LayoutInflater.from(this.context);
+
+        initiatePopupWindow();
     }
 
     /**
@@ -91,8 +101,8 @@ public class CustomPopup {
      * @param reason
      * @param DIALOG_TYPE
      */
-    public CustomPopup(@NonNull Context context, @NonNull PopupListener listener, @NonNull String messageTitle, @NonNull String messageBody,
-                       String posButton, String negButton, @NonNull String reason, @NonNull CustomPopupType DIALOG_TYPE) {
+    public CustomDialog(@NonNull Context context, @NonNull PopupListener listener, @NonNull String messageTitle, @NonNull String messageBody,
+                        String posButton, String negButton, @NonNull String reason, @NonNull CustomPopupType DIALOG_TYPE) {
         this.context        = context;
         this.listener       = listener;
         this.messageTitle   = messageTitle;
@@ -103,6 +113,8 @@ public class CustomPopup {
         this.DIALOG_TYPE    = DIALOG_TYPE;
 
         inflater = LayoutInflater.from(this.context);
+
+        initiatePopupWindow();
     }
 
     /**
@@ -117,8 +129,8 @@ public class CustomPopup {
      * @param DIALOG_TYPE
      * @param typeface
      */
-    public CustomPopup(@NonNull Context context, @NonNull PopupListener listener, @NonNull String messageTitle, @NonNull String messageBody,
-                       String posButton, String negButton, @NonNull String reason, @NonNull CustomPopupType DIALOG_TYPE, Typeface typeface) {
+    public CustomDialog(@NonNull Context context, @NonNull PopupListener listener, @NonNull String messageTitle, @NonNull String messageBody,
+                        String posButton, String negButton, @NonNull String reason, @NonNull CustomPopupType DIALOG_TYPE, Typeface typeface) {
         this.context        = context;
         this.listener       = listener;
         this.messageBody    = messageBody;
@@ -130,6 +142,8 @@ public class CustomPopup {
         this.tfNormal       = typeface;
 
         inflater = LayoutInflater.from(this.context);
+
+        initiatePopupWindow();
     }
 
     /**
@@ -177,22 +191,23 @@ public class CustomPopup {
      * @return
      */
     public boolean isShowing(){
-        if(pwindo != null && pwindo.isShowing())
+        if(cDialogs != null && cDialogs.isShowing())
             return true;
 
         return false;
     }
 
     /**
-     * Dismisses popup window.
+     * Dismisses dialog window.
      */
     public void dismiss(){
-        if(pwindo != null && pwindo.isShowing())
-            pwindo.dismiss();
+        if(cDialogs != null && cDialogs.isShowing())
+            cDialogs.dismiss();
     }
 
     public void show(){
-        initiatePopupWindow();
+        if(cDialogs != null && !cDialogs.isShowing())
+            cDialogs.show();
     }
 
     private void initiatePopupWindow() {
@@ -202,29 +217,36 @@ public class CustomPopup {
 
             switch (DIALOG_TYPE){
                 case DIALOG_SUCCESS:
-                    layout = inflater.inflate(R.layout.custom_popup_success, null);
+                    layout = inflater.inflate(R.layout.custom_dialog_success, null);
                     break;
                 case DIALOG_FAILURE:
-                    layout = inflater.inflate(R.layout.custom_popup_failure, null);
+                    layout = inflater.inflate(R.layout.custom_dialog_failure, null);
                     break;
                 case DIALOG_ALERT:
-                    layout = inflater.inflate(R.layout.custom_popup_alert, null);
+                    layout = inflater.inflate(R.layout.custom_dialog_alert, null);
                     break;
                 case DIALOG_NORMAL:
-                    layout = inflater.inflate(R.layout.custom_popup_normal, null);
+                    layout = inflater.inflate(R.layout.custom_dialog_normal, null);
                     break;
                 case DIALOG_WAIT:
-                    layout = inflater.inflate(R.layout.custom_popup_wait, null);
+                    layout = inflater.inflate(R.layout.custom_dialog_wait, null);
                     break;
             }
 
-            pwindo = new PopupWindow(layout, ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT, true);
+//            cDialogs = new CustomDialogs(context, layout, /*WindowManager.LayoutParams.MATCH_PARENT, WindowManager.LayoutParams.MATCH_PARENT,*/ false);
+            cDialogs = new Dialog(context);
+            cDialogs.setContentView(layout);
 
-            if(DIALOG_TYPE != CustomPopupType.DIALOG_WAIT)
-                pwindo.setAnimationStyle(R.style.AnimationPopUp);
+
+
+
+//            pwindo = new PopupWindow(layout, ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT, true);
+
+//            if(DIALOG_TYPE != CustomPopupType.DIALOG_WAIT)
+//                pwindo.setAnimationStyle(R.style.AnimationPopUp);
 //            pwindo.setAnimationStyle(R.style.AnimationSlideVertical);
 
-            pwindo.showAtLocation(layout, Gravity.CENTER, 0, 0);
+//            pwindo.showAtLocation(layout, Gravity.CENTER, 0, 0);
 
 
             tvContentDecline    = (TextView) layout.findViewById(R.id.tvContentDecline);
@@ -326,7 +348,8 @@ public class CustomPopup {
             new Handler().postDelayed(new Runnable() {
                 @Override
                 public void run() {
-                    pwindo.dismiss();
+                    if(cDialogs != null)
+                        cDialogs.dismiss();
                     listener.OnButtonYesClick(reason);
                 }
             },CLICK_DELAY);
@@ -338,7 +361,8 @@ public class CustomPopup {
             new Handler().postDelayed(new Runnable() {
                 @Override
                 public void run() {
-                    pwindo.dismiss();
+                    if(cDialogs != null)
+                        cDialogs.dismiss();
                     listener.OnButtonNoClick(reason);
                 }
             },CLICK_DELAY);
