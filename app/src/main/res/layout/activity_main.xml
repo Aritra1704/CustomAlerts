@@ -1,23 +1,104 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
+<LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:paddingBottom="@dimen/activity_vertical_margin"
-    android:paddingLeft="@dimen/activity_horizontal_margin"
-    android:paddingRight="@dimen/activity_horizontal_margin"
-    android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context="com.arpaul.customalerts.MainActivity">
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Hello World!"/>
+    android:background="@color/colorLightBlue"
+    android:orientation="vertical">
 
     <Button
-        android:id="@+id/btnAlert"
-        android:layout_width="wrap_content"
+        android:id="@+id/btnDialog"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Check"
+        android:visibility="visible"/>
+
+    <Button
+        android:id="@+id/btnProgressBar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="ProgressBar"
+        android:visibility="gone"/>
+
+    <Button
+        android:id="@+id/btnCustomDialogAccept"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Accept"/>
+
+    <Button
+        android:id="@+id/btnCustomDialogDecline"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Failure"/>
+
+    <Button
+        android:id="@+id/btnCustomDialogAlert"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Alert"/>
-</RelativeLayout>
+
+    <Button
+        android:id="@+id/btnCustomDialogNormal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Normal"/>
+
+    <Button
+        android:id="@+id/btnCustomDialogWait"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Wait"/>
+
+    <Button
+        android:id="@+id/btnCustomList"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="List"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/btnTwoway"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="@dimen/weight"
+            android:text="Two way"/>
+
+        <Button
+            android:id="@+id/btnMaterial"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="@dimen/weight"
+            android:text="Material"/>
+
+        <Button
+            android:id="@+id/btnDeterminateTwoway"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="@dimen/weight"
+            android:text="D Two way"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/margin_10"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Choose"/>
+
+        <com.arpaul.customalertlibrary.popups.textSpinner.CustomSpinner
+            android:id="@+id/csTest"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="@dimen/margin_50"/>
+    </LinearLayout>
+</LinearLayout>
