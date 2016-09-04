@@ -1,40 +1,56 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.design.widget.CoordinatorLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    style="@style/StyleCoordinatorLayout">
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorBlackTranslucent"
+    android:foregroundGravity="center"
+    android:orientation="vertical">
 
-    <android.support.design.widget.AppBarLayout
-        android:id="@+id/app_bar"
+    <TextView
+        android:id="@+id/tvContentTitle"
         android:layout_width="match_parent"
-        android:layout_height="@dimen/margin_60"
-        android:theme="@style/AppTheme.AppBarOverlay">
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:background="@color/colorOffWhite"
+        android:paddingBottom="@dimen/margin_12"
+        android:paddingLeft="@dimen/margin_20"
+        android:paddingRight="@dimen/margin_20"
+        android:paddingTop="@dimen/margin_12"
+        android:text="title"
+        android:textColor="@color/colorWhite"
+        android:textSize="@dimen/textsize_20" />
 
-        <android.support.design.widget.CollapsingToolbarLayout
-            android:id="@+id/toolbar_layout"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:background="@color/colorOffWhite"
-            android:fitsSystemWindows="true"
-            android:foregroundGravity="center"
-            app:contentScrim="?attr/colorPrimary">
+    <TextView
+        android:id="@+id/tvContentBody"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/colorWhite"
+        android:paddingBottom="@dimen/margin_10"
+        android:paddingLeft="@dimen/margin_20"
+        android:paddingRight="@dimen/margin_20"
+        android:paddingTop="@dimen/margin_10"
+        android:text="Body"
+        android:textSize="@dimen/textsize_15" />
 
-            <TextView
-                android:id="@+id/tvContentTitle"
-                style="@style/StyleTitle"/>
+    <LinearLayout
+        android:id="@+id/llLowerLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom"
+        android:background="@color/colorWhite"
+        android:gravity="right"
+        android:orientation="horizontal"
+        android:paddingTop="@dimen/margin_20">
 
-        </android.support.design.widget.CollapsingToolbarLayout>
-    </android.support.design.widget.AppBarLayout>
+        <TextView
+            android:id="@+id/tvContentDecline"
+            style="@style/StyleDecline"
+            android:textColor="@color/colorLightGrey" />
 
-    <include layout="@layout/content_normal"/>
-
-    <android.support.design.widget.FloatingActionButton
-        android:id="@+id/fabDayNewSchedule"
-        style="@style/StyleFAB"
-        android:src="@drawable/svg_tick"
-        android:tint="@color/colorBluishGreen"
-        android:visibility="gone"
-        app:backgroundTint="@color/colorOffWhite"
-        app:layout_anchor="@id/app_bar"
-        app:layout_anchorGravity="bottom|center_horizontal"/>
-</android.support.design.widget.CoordinatorLayout>
+        <TextView
+            android:id="@+id/tvContentAccept"
+            style="@style/StyleAccept"
+            android:textColor="@color/colorBluishGreen" />
+    </LinearLayout>
+</LinearLayout>

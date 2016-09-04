@@ -1,5 +1,6 @@
 package com.arpaul.customalertlibrary.dialogs;
 
+import android.app.Activity;
 import android.app.Dialog;
 import android.content.Context;
 import android.graphics.Typeface;
@@ -12,6 +13,7 @@ import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
@@ -233,9 +235,9 @@ public class CustomDialog {
                     break;
             }
 
-//            cDialogs = new CustomDialogs(context, layout, /*WindowManager.LayoutParams.MATCH_PARENT, WindowManager.LayoutParams.MATCH_PARENT,*/ false);
-            cDialogs = new Dialog(context);
-            cDialogs.setContentView(layout);
+            cDialogs = new CustomDialogs(context, layout, WindowManager.LayoutParams.MATCH_PARENT, WindowManager.LayoutParams.MATCH_PARENT, false);
+//            cDialogs = new Dialog(context);
+//            cDialogs.setContentView(layout);
 
 
 

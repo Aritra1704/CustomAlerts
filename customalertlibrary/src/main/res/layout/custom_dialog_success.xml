@@ -14,9 +14,10 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:background="@color/colorBluishGreen"
-        android:paddingBottom="@dimen/margin_15"
+        android:paddingBottom="@dimen/margin_12"
         android:paddingLeft="@dimen/margin_20"
-        android:paddingTop="@dimen/margin_15"
+        android:paddingRight="@dimen/margin_20"
+        android:paddingTop="@dimen/margin_12"
         android:text="title"
         android:textColor="@color/colorWhite"
         android:textSize="@dimen/textsize_20"/>
@@ -29,6 +30,7 @@
         android:paddingLeft="@dimen/margin_20"
         android:paddingRight="@dimen/margin_20"
         android:paddingTop="@dimen/margin_10"
+        android:paddingBottom="@dimen/margin_10"
         android:text="Body"
         android:textSize="@dimen/textsize_15"/>
 
