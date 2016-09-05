@@ -22,17 +22,21 @@
         android:textColor="@color/colorWhite"
         android:textSize="@dimen/textsize_20"/>
 
-    <TextView
+    <!--<TextView
         android:id="@+id/tvContentBody"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@color/colorWhite"
+        android:minWidth="@dimen/margin_200"
+        android:maxWidth="@dimen/margin_250"
         android:paddingLeft="@dimen/margin_20"
         android:paddingRight="@dimen/margin_20"
         android:paddingTop="@dimen/margin_10"
         android:paddingBottom="@dimen/margin_10"
         android:text="Body"
-        android:textSize="@dimen/textsize_15"/>
+        android:textSize="@dimen/textsize_15"/>-->
+
+    <include layout="@layout/content_dialog_body"/>
 
     <LinearLayout
         android:id="@+id/llLowerLayout"

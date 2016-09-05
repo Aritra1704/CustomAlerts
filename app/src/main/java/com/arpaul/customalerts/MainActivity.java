@@ -49,6 +49,8 @@ public class MainActivity extends AppCompatActivity implements PopupListener, Po
             }
         });
 
+//        new CustomDialog(MainActivity.this, MainActivity.this, "Success","Message success",
+//                null, null, "Success", CustomPopupType.DIALOG_SUCCESS).show();
         findViewById(R.id.btnDialogSuccess).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -62,8 +64,7 @@ public class MainActivity extends AppCompatActivity implements PopupListener, Po
         findViewById(R.id.btnDialogAlert).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                cDialog = new CustomDialog(MainActivity.this, MainActivity.this, "Alert","Message alert",
-                        getString(R.string.ok), null, "Alert", CustomPopupType.DIALOG_ALERT);
+                cDialog = new CustomDialog(MainActivity.this, MainActivity.this, getString(R.string.gpssettings),getString(R.string.gps_not_enabled),getString(R.string.settings),getString(R.string.cancel),getString(R.string.settings), CustomPopupType.DIALOG_ALERT);
 //                cPopup.setHeaderColor(ColorUtils.getColor(MainActivity.this,R.color.colorBrightRed));
                 cDialog.show();
             }
