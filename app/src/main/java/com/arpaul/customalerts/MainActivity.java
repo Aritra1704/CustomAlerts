@@ -1,6 +1,7 @@
 package com.arpaul.customalerts;
 
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.Typeface;
 import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
@@ -44,8 +45,9 @@ public class MainActivity extends AppCompatActivity implements PopupListener, Po
         findViewById(R.id.btnDialog).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                showCustomDialog(getString(R.string.gpssettings),getString(R.string.gps_not_enabled),getString(R.string.settings),getString(R.string.cancel),getString(R.string.settings), CustomPopupType.DIALOG_ALERT,false);
+//                showCustomDialog(getString(R.string.gpssettings),getString(R.string.gps_not_enabled),getString(R.string.settings),getString(R.string.cancel),getString(R.string.settings), CustomPopupType.DIALOG_ALERT,false);
 //                showDialog(MainActivity.this,"Title","Content body","Accept","Discard","test",false);
+                startActivity(new Intent(MainActivity.this, PaletteActivity.class));
             }
         });
 

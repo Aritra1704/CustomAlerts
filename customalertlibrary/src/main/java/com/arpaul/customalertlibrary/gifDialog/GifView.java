@@ -1,4 +1,4 @@
-package com.arpaul.customalertlibrary.popups.gifDialog;
+package com.arpaul.customalertlibrary.gifDialog;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
