@@ -19,6 +19,7 @@ import com.arpaul.customalertlibrary.popups.repeatDialog.CustomRepeatPopup;
 import com.arpaul.customalertlibrary.popups.repeatDialog.PopupRepeatListener;
 import com.arpaul.customalertlibrary.popups.statingDialog.CustomPopup;
 import com.arpaul.customalertlibrary.popups.statingDialog.CustomPopupType;
+import com.arpaul.customalertlibrary.popups.statingDialog.CustomSuccessPopup;
 import com.arpaul.customalertlibrary.popups.statingDialog.PopupListener;
 import com.arpaul.customalertlibrary.popups.textSpinner.CustomSpinner;
 import com.arpaul.customalertlibrary.popups.textSpinner.SpinnerCellListener;
@@ -89,6 +90,13 @@ public class MainActivity extends AppCompatActivity implements PopupListener, Po
                         null, null, "Success", CustomPopupType.DIALOG_SUCCESS);
 //                cPopup.setHeaderColor(ColorUtils.getColor(MainActivity.this,R.color.colorBrightRed));
                 cPopup.show();
+            }
+        });
+
+        findViewById(R.id.btnDialogSuccessNobody).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                new CustomSuccessPopup(MainActivity.this, MainActivity.this, "Success", "Success").show();
             }
         });
 

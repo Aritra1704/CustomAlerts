@@ -8,5 +8,6 @@ public enum CustomPopupType {
     DIALOG_FAILURE,
     DIALOG_ALERT,
     DIALOG_NORMAL,
-    DIALOG_WAIT
+    DIALOG_WAIT,
+    DIALOG_SUCCESS_NO_BODY,
 }

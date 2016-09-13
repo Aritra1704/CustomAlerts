@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorBlackTranslucent"
+    android:foregroundGravity="center"
+    android:orientation="vertical">
+
+    <android.support.design.widget.CoordinatorLayout
+        style="@style/StyleCoordinatorLayout"
+        android:layout_height="@dimen/margin_160"
+        android:layout_marginLeft="@dimen/margin_50"
+        android:layout_marginRight="@dimen/margin_50">
+
+        <android.support.design.widget.AppBarLayout
+            android:id="@+id/app_bar"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/margin_120"
+            android:theme="@style/AppTheme.AppBarOverlay">
+
+            <android.support.design.widget.CollapsingToolbarLayout
+                android:id="@+id/toolbar_layout"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@color/colorBluishGreen"
+                android:fitsSystemWindows="true"
+                android:foregroundGravity="center"
+                app:contentScrim="?attr/colorPrimary">
+
+                <TextView
+                    android:id="@+id/tvContentTitle"
+                    style="@style/StyleTitle"
+                    android:textSize="@dimen/textsize_36"
+                    android:text="Success"
+                    android:gravity="center"
+                    android:paddingBottom="@dimen/margin_10"/>
+
+            </android.support.design.widget.CollapsingToolbarLayout>
+        </android.support.design.widget.AppBarLayout>
+
+        <LinearLayout
+            android:id="@+id/llBody"
+            android:layout_width="match_parent"
+            android:orientation="vertical"
+            android:layout_height="match_parent"
+            android:background="@color/colorWhite">
+
+        </LinearLayout>
+
+        <ImageView
+            android:id="@+id/ivSign"
+            style="@style/StyleFAB"
+            android:layout_width="@dimen/margin_60"
+            android:layout_height="@dimen/margin_60"
+            android:src="@drawable/svg_tick"
+            android:tint="@color/colorBluishGreen"
+            app:layout_anchor="@id/app_bar"
+            app:layout_anchorGravity="bottom|center_horizontal"/>
+
+    </android.support.design.widget.CoordinatorLayout>
+</FrameLayout>

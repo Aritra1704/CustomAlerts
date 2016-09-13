@@ -77,7 +77,10 @@ public class CustomPopup {
         this.reason         = reason;
         this.DIALOG_TYPE    = DIALOG_TYPE;
 
-        inflater = LayoutInflater.from(this.context);
+        if(DIALOG_TYPE == CustomPopupType.DIALOG_SUCCESS_NO_BODY)
+            new CustomSuccessPopup(context, listener, messageTitle, reason);
+        else
+            inflater = LayoutInflater.from(this.context);
     }
 
     /**
@@ -102,7 +105,10 @@ public class CustomPopup {
         this.reason         = reason;
         this.DIALOG_TYPE    = DIALOG_TYPE;
 
-        inflater = LayoutInflater.from(this.context);
+        if(DIALOG_TYPE == CustomPopupType.DIALOG_SUCCESS_NO_BODY)
+            new CustomSuccessPopup(context, listener, messageTitle, reason);
+        else
+            inflater = LayoutInflater.from(this.context);
     }
 
     /**
@@ -129,7 +135,10 @@ public class CustomPopup {
         this.DIALOG_TYPE    = DIALOG_TYPE;
         this.tfNormal       = typeface;
 
-        inflater = LayoutInflater.from(this.context);
+        if(DIALOG_TYPE == CustomPopupType.DIALOG_SUCCESS_NO_BODY)
+            new CustomSuccessPopup(context, listener, messageTitle, reason);
+        else
+            inflater = LayoutInflater.from(this.context);
     }
 
     /**
