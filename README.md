@@ -15,5 +15,5 @@ In build.gradle (Project)
 And then in the other gradle file(may be your app gradle or your own module library gradle.)
 
 	 dependencies {
-	        compile 'com.github.Aritra1704:CustomAlerts:1.02'
+	        compile 'com.github.Aritra1704:CustomAlerts:1.03'
 	 }
